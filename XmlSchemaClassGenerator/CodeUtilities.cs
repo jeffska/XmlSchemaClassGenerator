@@ -42,7 +42,7 @@ namespace XmlSchemaClassGenerator
                     result = false;
                     break;
                 case XmlTypeCode.DateTime:
-                case XmlTypeCode.Time:
+// using string              case XmlTypeCode.Time:
                 case XmlTypeCode.Date:
                 case XmlTypeCode.Base64Binary:
                 case XmlTypeCode.HexBinary:
@@ -145,7 +145,7 @@ namespace XmlSchemaClassGenerator
                     resultType = typeof(string);
                     break;
                 case XmlTypeCode.Time:
-                    resultType = typeof(DateTime);
+                    resultType = typeof(string);
                     break;
                 case XmlTypeCode.Idref:
                     resultType = typeof(string);

@@ -1053,15 +1053,18 @@ namespace XmlSchemaClassGenerator
                 else if (Form == XmlSchemaForm.Qualified)
                 {
                     attribute.Arguments.Add(new CodeAttributeArgument("Namespace", new CodePrimitiveExpression(OwningType.XmlSchemaName.Namespace)));
-                }
-                else if (!IsAny)
+					attribute.Arguments.Add(new CodeAttributeArgument("Form",
+						new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(new CodeTypeReference(typeof(XmlSchemaForm), Configuration.CodeTypeReferenceOptions)),
+							"Qualified")));
+				}
+				else if (!IsAny)
                 {
                     attribute.Arguments.Add(new CodeAttributeArgument("Form",
                         new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(new CodeTypeReference(typeof(XmlSchemaForm), Configuration.CodeTypeReferenceOptions)),
                             "Unqualified")));
                 }
 
-                if (IsNillable)
+                if (IsNillable && !IsNullableValueType)
                 {
                     attribute.Arguments.Add(new CodeAttributeArgument("IsNullable", new CodePrimitiveExpression(true)));
                 }
